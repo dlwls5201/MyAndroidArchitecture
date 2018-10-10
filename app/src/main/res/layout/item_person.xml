@@ -1,0 +1,64 @@
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    app:cardElevation="5dp"
+    android:layout_margin="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:foreground="?android:attr/selectableItemBackground">
+
+    <LinearLayout
+        android:padding="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:orientation="vertical">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/iv_item_profile"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center"/>
+
+
+        <TextView
+            android:id="@+id/tv_item_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/colorAccent"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            tools:text="Black Jin"/>
+
+        <TextView
+            android:id="@+id/tv_item_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:textColor="@android:color/black"
+            android:textSize="15sp"
+            tools:text="010-0000-0000" />
+
+        <TextView
+            android:id="@+id/tv_item_mail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:textSize="15sp"
+            tools:text="black-jin0427.tistory.com"/>
+
+        <TextView
+            android:id="@+id/tv_item_like_cnt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorAccent"
+            android:textSize="15sp"
+            tools:text="Like : 10"/>
+
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>
