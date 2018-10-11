@@ -9,5 +9,5 @@ import dagger.Component;
 @Component(modules = DetailModule.class)
 public interface DetailComponent {
 
-    void injectDetail(DetailActivity activity);
+    void inject(DetailActivity activity);
 }

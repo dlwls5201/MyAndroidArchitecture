@@ -43,7 +43,7 @@ public class DetailActivity extends BaseActivity implements DetailContract.View 
         DaggerDetailComponent.builder()
                 .detailModule(new DetailModule(this))
                 .build()
-                .injectDetail(this);
+                .inject(this);
 
     }
 
