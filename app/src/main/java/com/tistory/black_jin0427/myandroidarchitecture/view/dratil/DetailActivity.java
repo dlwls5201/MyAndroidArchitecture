@@ -1,4 +1,4 @@
-package com.tistory.black_jin0427.myandroidarchitecture.view;
+package com.tistory.black_jin0427.myandroidarchitecture.view.dratil;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

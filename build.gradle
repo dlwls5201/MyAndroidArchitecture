@@ -28,6 +28,9 @@ buildscript {
         rxAndroidVersion = '2.0.2'
         rxJavaVersion = '2.1.3'
 
+        // dagger2
+        daggerVersion = '2.12'
+
     }
 
     repositories {
