@@ -1,6 +1,5 @@
-package com.tistory.black_jin0427.myandroidarchitecture.di.module;
-
-import com.tistory.black_jin0427.myandroidarchitecture.utils.CustomScope;
+package com.tistory.black_jin0427.myandroidarchitecture.view.main.di;
+import com.tistory.black_jin0427.myandroidarchitecture.utils.PerActivity;
 import com.tistory.black_jin0427.myandroidarchitecture.view.main.MainContract;
 
 import dagger.Module;
@@ -16,7 +15,7 @@ public class MainModule {
     }
 
     @Provides
-    @CustomScope
+    @PerActivity
     MainContract.View provideMainContractView() {
         return view;
     }

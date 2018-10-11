@@ -20,7 +20,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".view.dratil.DetailActivity"/>
+        <activity android:name=".view.detail.DetailActivity"/>
     </application>
 
 </manifest>

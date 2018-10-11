@@ -13,9 +13,9 @@ import com.tistory.black_jin0427.myandroidarchitecture.MyApplication;
 import com.tistory.black_jin0427.myandroidarchitecture.R;
 import com.tistory.black_jin0427.myandroidarchitecture.adapter.MainAdapter;
 import com.tistory.black_jin0427.myandroidarchitecture.api.model.User;
-import com.tistory.black_jin0427.myandroidarchitecture.di.component.DaggerMainComponent;
-import com.tistory.black_jin0427.myandroidarchitecture.di.module.MainModule;
-import com.tistory.black_jin0427.myandroidarchitecture.view.dratil.DetailActivity;
+import com.tistory.black_jin0427.myandroidarchitecture.view.main.di.DaggerMainComponent;
+import com.tistory.black_jin0427.myandroidarchitecture.view.main.di.MainModule;
+import com.tistory.black_jin0427.myandroidarchitecture.view.detail.DetailActivity;
 
 import java.util.ArrayList;
 
