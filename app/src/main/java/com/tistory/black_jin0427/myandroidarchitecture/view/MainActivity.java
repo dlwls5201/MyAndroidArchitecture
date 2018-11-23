@@ -92,6 +92,7 @@ public class MainActivity extends BaseActivity implements MainAdapter.OnItemClic
                                 }
                         )
         );
+
     }
 
     @Override
@@ -106,32 +107,4 @@ public class MainActivity extends BaseActivity implements MainAdapter.OnItemClic
         intent.putExtra(DetailActivity.KEY_USER, user);
         startActivity(intent);
     }
-
-     /*disposable.add(api.getUserList(Constant.RANDOM_USER_URL)
-                        .subscribeOn(Schedulers.io())
-                        .observeOn(AndroidSchedulers.mainThread())
-                        .doOnSubscribe(new Consumer<Disposable>() {
-                            @Override
-                            public void accept(Disposable disposable) throws Exception {
-                                Log.d("MyTag","doOnSubscribe");
-                            }
-                        })
-                        .doOnTerminate(new Action() {
-                            @Override
-                            public void run() throws Exception {
-                                Log.d("MyTag","doOnTerminate");
-                            }
-                        })
-                        .subscribe(new Consumer<UserResponse>() {
-                            @Override
-                            public void accept(UserResponse userResponse) throws Exception {
-                                Log.d("MyTag", userResponse.userList.toString());
-                            }
-                        }, new Consumer<Throwable>() {
-                            @Override
-                            public void accept(Throwable throwable) throws Exception {
-                                Log.e("MyTag", throwable.getMessage());
-                            }
-                        })
-                );*/
 }
