@@ -22,5 +22,4 @@ public class Login implements Serializable {
 
     @SerializedName("sha256") public String sha256;
 
-
 }
