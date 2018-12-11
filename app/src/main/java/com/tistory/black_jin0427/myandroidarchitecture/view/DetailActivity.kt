@@ -12,7 +12,7 @@ class DetailActivity: BaseActivity<ActivityDetailBinding>() {
 
     companion object {
 
-        val KEY_USER = "key_user"
+        const val KEY_USER = "key_user"
     }
 
     override val layoutResourceId = R.layout.activity_detail
@@ -38,7 +38,11 @@ class DetailActivity: BaseActivity<ActivityDetailBinding>() {
     }
 
     private fun getUserFromIntent() {
+
+        // intent data 받기
         user    = intent.getSerializableExtra(KEY_USER) as User
+
+        // app bar title 설정
         title   = user.fullName
 
         setData()

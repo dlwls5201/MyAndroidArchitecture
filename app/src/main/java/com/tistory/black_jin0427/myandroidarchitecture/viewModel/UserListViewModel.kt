@@ -12,33 +12,32 @@ import com.tistory.black_jin0427.myandroidarchitecture.rxEventBus.RxEvent
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 
-class UserListViewModel: DisposableViewModel() {
-
-    /*private val _progressView   = ObservableField<Int>()
-    private val _items          = ObservableField<List<User>>()
-    private val _adapter        = ObservableField<MainAdapter>()
-
-    val progressView: ObservableField<Int> get()    = _progressView
-    val items: ObservableField<List<User>> get()    = _items
-    val adapter: ObservableField<MainAdapter> get() = _adapter*/
+class UserListViewModel(
+        private val mainAdapter: MainAdapter,
+        private val api: GithubApi)
+    : DisposableViewModel() {
 
     private val _progressView   = MutableLiveData<Int>()
-
     private val _items          = MutableLiveData<List<User>>()
 
-    private val _adapter        = MutableLiveData<MainAdapter>()
-
+    private val _adapter        = MutableLiveData<MainAdapter>().apply { value =  mainAdapter }
 
     val progressView: LiveData<Int> get()    = _progressView
-
     val items: LiveData<List<User>> get()    = _items
-
     val adapter: LiveData<MainAdapter> get() = _adapter
-
 
     init {
 
         Log.d("blackJin", "init")
+        //_adapter.value = mainAdapter
+
+        registerEvent()
+        loadData()
+
+    }
+
+    private fun registerEvent() {
+
         addDisposable(
                 RxEvent.getInstance()
                         .observable
@@ -47,15 +46,10 @@ class UserListViewModel: DisposableViewModel() {
                                 _adapter.value?.updateView(user)
                             }
                         }
-                )
-
+        )
     }
 
-    fun setAdapter(adapter: MainAdapter) {
-        _adapter.value = adapter
-    }
-
-    fun loadData(api: GithubApi) {
+    private fun loadData() {
 
         addDisposable(
                 api.getUserList(RANDOM_USER_URL)

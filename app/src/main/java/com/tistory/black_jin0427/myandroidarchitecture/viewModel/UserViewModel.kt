@@ -10,16 +10,7 @@ import com.bumptech.glide.Glide
 import com.tistory.black_jin0427.myandroidarchitecture.api.model.User
 import com.tistory.black_jin0427.myandroidarchitecture.rxEventBus.RxEvent
 
-//https://kaidroid.me/post/android-mvvm-viewmodel-livedata-databinding/
 class UserViewModel: DisposableViewModel() {
-
-   /* val username    = "username"
-    val profileUrl  = "https://t1.daumcdn.net/cfile/tistory/2511E03B577BB58733"
-    val likeCnt     = "likeCnt"*/
-
-    /*val username    = ObservableField<String>()
-    val profileUrl  = ObservableField<String>()
-    val likeCnt     = ObservableField<Int>()*/
 
     private val _username   = MutableLiveData<String>()
     private val _profileUrl = MutableLiveData<String>()
@@ -33,19 +24,17 @@ class UserViewModel: DisposableViewModel() {
 
     private var user: User? = null
 
+    // data setting
     fun setUser(user: User) {
         this.user = user
 
-        // setValue, postValue 둘 다 가능
         _username.value = user.fullName
         _profileUrl.value = user.picture?.large
         _likeCnt.value = user.likeCnt
 
-       /* _username.postValue(user.fullName)
-        _profileUrl.postValue(user.picture.large)
-        _likeCnt.postValue(user.likeCnt)*/
     }
 
+    // plus like count and event to rxBus when click like button
     fun addLikeCnt() {
 
         _likeCnt.value = _likeCnt.value?.plus(1)
@@ -54,27 +43,4 @@ class UserViewModel: DisposableViewModel() {
 
         RxEvent.getInstance().sendEvent(user)
     }
-
-    /*fun setUser(user: User) {
-        Log.d("MyTag", "user : ${user.fullName}")
-        Log.d("MyTag", "picture : ${user.picture.large}")
-        Log.d("MyTag", "likeCnt : ${user.likeCnt}")
-
-        username.set(user.fullName)
-        profileUrl.set(user.picture.large)
-        likeCnt.set(user.likeCnt)
-    }
-
-    fun addLikeCnt() {
-        var temp = likeCnt.get()
-
-        temp?.let {
-            temp++
-            Log.d("MyTag","temp : $temp")
-
-            likeCnt.set(temp)
-        }
-
-    }*/
-
 }
