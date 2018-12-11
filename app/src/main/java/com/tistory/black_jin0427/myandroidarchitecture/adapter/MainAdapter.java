@@ -11,6 +11,7 @@ import com.tistory.black_jin0427.myandroidarchitecture.R;
 import com.tistory.black_jin0427.myandroidarchitecture.api.model.User;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -18,7 +19,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MainAdapter extends RecyclerView.Adapter<MainAdapter.PersonHolder> {
 
-    private ArrayList<User> items = new ArrayList<>();
+    private List<User> items;
 
     private OnItemClickListener listener;
 
@@ -37,13 +38,13 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.PersonHolder> 
         User user = items.get(personHolder.getAdapterPosition());
 
         Glide.with(personHolder.itemView.getContext())
-                .load(user.picture.large)
+                .load(user.getPicture().getLarge())
                 .into(personHolder.ivItemProfile);
 
         personHolder.tvItemName.setText(user.getFullName());
-        personHolder.tvItemPhone.setText(user.phone);
-        personHolder.tvItemMail.setText(user.email);
-        personHolder.tvItemLikeCnt.setText(user.getLikeCnt());
+        personHolder.tvItemPhone.setText(user.getPhone());
+        personHolder.tvItemMail.setText(user.getEmail());
+        personHolder.tvItemLikeCnt.setText(String.valueOf(user.getLikeCnt()));
 
         personHolder.itemView.setOnClickListener(view
                 -> listener.onClick(user));
@@ -51,7 +52,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.PersonHolder> 
 
     @Override
     public int getItemCount() {
-        return items.size();
+        return items != null ? items.size() : 0;
     }
 
     public void updateView(User user) {
@@ -73,7 +74,7 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.PersonHolder> 
         return RecyclerView.NO_POSITION;
     }
 
-    public void setItems(ArrayList<User> items) {
+    public void setItems(List<User> items) {
         this.items = items;
         notifyDataSetChanged();
     }

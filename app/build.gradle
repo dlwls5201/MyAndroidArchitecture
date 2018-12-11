@@ -69,6 +69,12 @@ dependencies {
     implementation "io.reactivex.rxjava2:rxandroid:$rxAndroidVersion"
     implementation "io.reactivex.rxjava2:rxjava:$rxJavaVersion"
 
+    // ViewModel and LiveData
+    implementation "android.arch.lifecycle:extensions:$lifecycleVersion"
+
+    // koin for Kotlin apps
+    implementation "org.koin:koin-android:$koinVersion"
+
     // circle imageView
     implementation 'de.hdodenhof:circleimageview:2.1.0'
 

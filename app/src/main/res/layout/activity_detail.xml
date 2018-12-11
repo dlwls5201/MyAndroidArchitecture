@@ -1,31 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:gravity="center"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/iv_detail_profile"
-        android:layout_width="100dp"
-        android:layout_height="100dp" />
-    
-    <TextView
-        android:id="@+id/tv_detail_like_cnt"
-        android:layout_marginTop="10dp"
-        android:textSize="15sp"
-        android:textColor="@android:color/black"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        tools:text="like : 10"/>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <Button
-        android:id="@+id/btn_detail_like"
-        android:layout_marginTop="10dp"
-        android:text="LIKE"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <data>
+        <variable
+            name="user"
+            type="com.tistory.black_jin0427.myandroidarchitecture.viewModel.UserViewModel"/>
+    </data>
 
-</LinearLayout>
+    <LinearLayout
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            url="@{user.profileUrl}"/>
+
+        <TextView
+            android:layout_marginTop="10dp"
+            android:textSize="15sp"
+            android:textColor="@android:color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{user.username}"/>
+
+        <TextView
+            android:layout_marginTop="10dp"
+            android:textSize="15sp"
+            android:textColor="@android:color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{user.likeCnt.toString}"/>
+
+        <Button
+            android:layout_marginTop="10dp"
+            android:text="LIKE"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{() -> user.addLikeCnt()}"/>
+
+    </LinearLayout>
+
+</layout>

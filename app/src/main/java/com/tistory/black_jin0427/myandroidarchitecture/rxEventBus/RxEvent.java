@@ -3,7 +3,6 @@ package com.tistory.black_jin0427.myandroidarchitecture.rxEventBus;
 import io.reactivex.Observable;
 import io.reactivex.subjects.PublishSubject;
 
-//https://blog.fobid.me/2
 public class RxEvent {
 
     private static RxEvent instance;
