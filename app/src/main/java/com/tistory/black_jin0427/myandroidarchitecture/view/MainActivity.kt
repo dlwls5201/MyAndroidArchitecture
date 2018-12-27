@@ -13,7 +13,6 @@ import com.tistory.black_jin0427.myandroidarchitecture.viewModel.UserListViewMod
 import com.tistory.black_jin0427.myandroidarchitecture.viewModel.UserListViewModelFactory
 import org.koin.android.ext.android.inject
 
-//https://kaidroid.me/post/android-mvvm-viewmodel-livedata-databinding/
 class MainActivity : BaseActivity<ActivityMainBinding>(), MainAdapter.OnItemClickListener {
 
     override val layoutResourceId = R.layout.activity_main
@@ -21,7 +20,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>(), MainAdapter.OnItemClic
     private val adapter = MainAdapter().apply { setClickListener(this@MainActivity) }
 
     private val api: GithubApi by inject()
-
 
     private lateinit var userListViewModel: UserListViewModel
 
@@ -35,7 +33,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>(), MainAdapter.OnItemClic
         userListViewModelFactory = UserListViewModelFactory(adapter, api)
 
         // 뷰 모델 초기화 및 관찰자 연결
-        userListViewModel = ViewModelProviders.of(this, userListViewModelFactory).get(UserListViewModel::class.java)
+        userListViewModel = ViewModelProviders.of(this, userListViewModelFactory)
+                .get(UserListViewModel::class.java)
 
         // 데이터 바인딩에 뷰 모델 연결
         viewDataBinding.model = userListViewModel

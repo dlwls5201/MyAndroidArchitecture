@@ -19,9 +19,10 @@ class UserListViewModel(
 
     private val _progressView   = MutableLiveData<Int>()
     private val _items          = MutableLiveData<List<User>>()
-
     private val _adapter        = MutableLiveData<MainAdapter>().apply { value =  mainAdapter }
 
+    //mutableLiveData 를 immutable 하게 노출
+    //ViewModel 내부에서는 Mutable 한 데이터를 외부에서는 Immutable 하게 사용하도록 제약을 주기 위함
     val progressView: LiveData<Int> get()    = _progressView
     val items: LiveData<List<User>> get()    = _items
     val adapter: LiveData<MainAdapter> get() = _adapter

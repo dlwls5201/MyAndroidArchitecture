@@ -1,7 +1,6 @@
 <layout>
 
     <data>
-        <import type="java.lang.String" />
         <variable
             name="user"
             type="com.tistory.black_jin0427.myandroidarchitecture.api.model.User"/>
