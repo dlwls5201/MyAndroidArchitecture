@@ -1,5 +1,6 @@
 package com.tistory.black_jin0427.myandroidarchitecture.adapter;
 
+import android.databinding.DataBindingUtil;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -9,6 +10,8 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.tistory.black_jin0427.myandroidarchitecture.R;
 import com.tistory.black_jin0427.myandroidarchitecture.api.model.User;
+import com.tistory.black_jin0427.myandroidarchitecture.databinding.ItemPersonBinding;
+import com.tistory.black_jin0427.myandroidarchitecture.viewModel.UserViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,7 +40,10 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.PersonHolder> 
 
         User user = items.get(personHolder.getAdapterPosition());
 
-        Glide.with(personHolder.itemView.getContext())
+        personHolder.binding.setUser(user);
+        personHolder.binding.setListener(listener);
+
+        /*Glide.with(personHolder.itemView.getContext())
                 .load(user.getPicture().getLarge())
                 .into(personHolder.ivItemProfile);
 
@@ -47,7 +53,8 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.PersonHolder> 
         personHolder.tvItemLikeCnt.setText(String.valueOf(user.getLikeCnt()));
 
         personHolder.itemView.setOnClickListener(view
-                -> listener.onClick(user));
+                -> listener.onClick(user));*/
+
     }
 
     @Override
@@ -89,7 +96,9 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.PersonHolder> 
 
     class PersonHolder extends RecyclerView.ViewHolder {
 
-        @BindView(R.id.iv_item_profile)
+        ItemPersonBinding binding;
+
+        /*@BindView(R.id.iv_item_profile)
         CircleImageView ivItemProfile;
 
         @BindView(R.id.tv_item_name)
@@ -102,11 +111,12 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.PersonHolder> 
         TextView tvItemMail;
 
         @BindView(R.id.tv_item_like_cnt)
-        TextView tvItemLikeCnt;
+        TextView tvItemLikeCnt;*/
 
         PersonHolder(View itemView) {
             super(itemView);
-            ButterKnife.bind(this, itemView);
+            //ButterKnife.bind(this, itemView);
+            binding = DataBindingUtil.bind(itemView);
         }
     }
 }

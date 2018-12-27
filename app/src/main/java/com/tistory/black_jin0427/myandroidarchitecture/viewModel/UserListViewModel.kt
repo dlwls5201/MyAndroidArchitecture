@@ -28,9 +28,6 @@ class UserListViewModel(
 
     init {
 
-        Log.d("blackJin", "init")
-        //_adapter.value = mainAdapter
-
         registerEvent()
         loadData()
 

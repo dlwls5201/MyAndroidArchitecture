@@ -45,6 +45,7 @@ class DetailActivity: BaseActivity<ActivityDetailBinding>() {
         // app bar title 설정
         title   = user.fullName
 
+        // viewMode 설정
         setData()
     }
 
