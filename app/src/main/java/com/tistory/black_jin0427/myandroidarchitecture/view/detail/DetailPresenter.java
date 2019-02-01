@@ -9,9 +9,14 @@ public class DetailPresenter implements DetailContract.Presenter {
 
     DetailContract.View view;
 
-    @Inject
-    DetailPresenter(DetailContract.View view) {
+    @Override
+    public void setView(DetailContract.View view) {
         this.view = view;
+    }
+
+    @Override
+    public void releaseView() {
+
     }
 
     @Override

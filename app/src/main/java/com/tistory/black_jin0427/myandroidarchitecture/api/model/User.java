@@ -4,10 +4,6 @@ import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
-/**
- * Created by Ahmad Shubita on 8/1/17.
- */
-
 public class User implements Serializable {
 
     @SerializedName("gender") public String gender;
@@ -32,5 +28,4 @@ public class User implements Serializable {
 
     public String getLikeCnt() { return "Like : " + likeCnt; }
 
-    public boolean hasEmail() { return email != null && !email.isEmpty(); }
 }

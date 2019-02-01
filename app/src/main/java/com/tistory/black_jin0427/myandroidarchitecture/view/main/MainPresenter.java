@@ -3,6 +3,7 @@ package com.tistory.black_jin0427.myandroidarchitecture.view.main;
 import android.util.Log;
 
 import com.tistory.black_jin0427.myandroidarchitecture.api.GithubApi;
+import com.tistory.black_jin0427.myandroidarchitecture.api.GithubApiProvider;
 import com.tistory.black_jin0427.myandroidarchitecture.api.model.User;
 import com.tistory.black_jin0427.myandroidarchitecture.constant.Constant;
 import com.tistory.black_jin0427.myandroidarchitecture.rxEventBus.RxEvent;
@@ -18,19 +19,30 @@ import retrofit2.Retrofit;
 
 public class MainPresenter implements MainContract.Presenter {
 
-    Retrofit retrofit;
+    GithubApi api;
     MainContract.View view;
 
-    @Inject
-    public MainPresenter(Retrofit retrofit, MainContract.View view) {
-        this.retrofit = retrofit;
+    private CompositeDisposable disposable;
+
+    public MainPresenter() {
+        this.api = GithubApiProvider.provideGithubApi();
+        this.disposable = new CompositeDisposable();
+    }
+
+    @Override
+    public void setView(MainContract.View view) {
         this.view = view;
     }
 
     @Override
-    public void loadData(CompositeDisposable disposable) {
+    public void releaseView() {
+        disposable.clear();
+    }
 
-        disposable.add(retrofit.create(GithubApi.class).getUserList(Constant.RANDOM_USER_URL)
+    @Override
+    public void loadData() {
+
+        disposable.add(api.getUserList(Constant.RANDOM_USER_URL)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnSubscribe(__ -> {
@@ -46,11 +58,10 @@ public class MainPresenter implements MainContract.Presenter {
                 })
         );
 
-
     }
 
     @Override
-    public void setRxEvent(CompositeDisposable disposable) {
+    public void setRxEvent() {
 
         disposable.add(
                 RxEvent.getInstance()

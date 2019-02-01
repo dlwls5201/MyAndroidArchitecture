@@ -15,6 +15,9 @@ android {
         // test framework
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+    kapt {
+        generateStubs = true
+    }
     buildTypes {
         release {
             minifyEnabled false
@@ -60,6 +63,10 @@ dependencies {
     implementation "org.jetbrains.anko:anko-commons:$ankoVersion"
     implementation "org.jetbrains.anko:anko-appcompat-v7-commons:$ankoVersion"
     implementation "org.jetbrains.anko:anko-support-v4-commons:$ankoVersion"
+
+    // room
+    implementation "android.arch.persistence.room:runtime:$roomVersion"
+    kapt "android.arch.persistence.room:compiler:$roomVersion"
 
     // rx android
     implementation "io.reactivex.rxjava2:rxandroid:$rxAndroidVersion"

@@ -4,10 +4,6 @@ import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
-/**
- * Created by me on 7/25/17.
- */
-
 public class Location implements Serializable {
 
     @SerializedName("street") public String street;

@@ -1,5 +1,6 @@
 package com.tistory.black_jin0427.myandroidarchitecture.view.main;
 
+import com.tistory.black_jin0427.myandroidarchitecture.BasePresenter;
 import com.tistory.black_jin0427.myandroidarchitecture.api.model.User;
 
 import java.util.ArrayList;
@@ -23,10 +24,16 @@ public interface MainContract {
 
     }
 
-    interface Presenter {
+    interface Presenter extends BasePresenter<MainContract.View> {
 
-        void loadData(CompositeDisposable disposable);
+        @Override
+        void setView(View view);
 
-        void setRxEvent(CompositeDisposable disposable);
+        @Override
+        void releaseView();
+
+        void loadData();
+
+        void setRxEvent();
     }
 }
