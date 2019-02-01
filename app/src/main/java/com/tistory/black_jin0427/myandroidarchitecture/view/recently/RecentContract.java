@@ -1,4 +1,4 @@
-package com.tistory.black_jin0427.myandroidarchitecture.view.main;
+package com.tistory.black_jin0427.myandroidarchitecture.view.recently;
 
 import com.tistory.black_jin0427.myandroidarchitecture.BasePresenter;
 import com.tistory.black_jin0427.myandroidarchitecture.api.model.User;
@@ -6,10 +6,7 @@ import com.tistory.black_jin0427.myandroidarchitecture.room.UserDao;
 
 import java.util.ArrayList;
 
-import io.reactivex.disposables.CompositeDisposable;
-import io.reactivex.disposables.Disposable;
-
-public interface MainContract {
+public interface RecentContract {
 
     interface View {
 
@@ -17,15 +14,10 @@ public interface MainContract {
 
         void hideProgress();
 
-        void showToast(String message);
-
         void setItems(ArrayList<User> items);
-
-        void updateView(User user);
-
     }
 
-    interface Presenter extends BasePresenter<MainContract.View> {
+    interface Presenter extends BasePresenter<RecentContract.View> {
 
         @Override
         void setView(View view);
@@ -33,10 +25,10 @@ public interface MainContract {
         @Override
         void releaseView();
 
-        void loadData();
+        void loadData(UserDao userDao);
 
-        void setRxEvent();
+        void deleteData(UserDao userDao, User user);
 
-        void addUser(UserDao userDao, User user);
+        void clearAll(UserDao userDao);
     }
 }

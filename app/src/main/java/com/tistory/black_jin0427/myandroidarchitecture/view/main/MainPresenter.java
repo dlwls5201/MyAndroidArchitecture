@@ -6,12 +6,14 @@ import com.tistory.black_jin0427.myandroidarchitecture.api.GithubApi;
 import com.tistory.black_jin0427.myandroidarchitecture.api.GithubApiProvider;
 import com.tistory.black_jin0427.myandroidarchitecture.api.model.User;
 import com.tistory.black_jin0427.myandroidarchitecture.constant.Constant;
+import com.tistory.black_jin0427.myandroidarchitecture.room.UserDao;
 import com.tistory.black_jin0427.myandroidarchitecture.rxEventBus.RxEvent;
 
 import java.util.ArrayList;
 
 import javax.inject.Inject;
 
+import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
@@ -24,7 +26,7 @@ public class MainPresenter implements MainContract.Presenter {
 
     private CompositeDisposable disposable;
 
-    public MainPresenter() {
+    MainPresenter() {
         this.api = GithubApiProvider.provideGithubApi();
         this.disposable = new CompositeDisposable();
     }
@@ -54,7 +56,7 @@ public class MainPresenter implements MainContract.Presenter {
                 .subscribe(userResponse -> {
                     view.setItems((ArrayList<User>)userResponse.userList);
                 }, error -> {
-                    view.showToast(error.getMessage());
+                    Log.e("MyTag",error.getMessage());
                 })
         );
 
@@ -80,5 +82,27 @@ public class MainPresenter implements MainContract.Presenter {
                                 }
                         )
         );
+    }
+
+    @Override
+    public void addUser(UserDao userDao, User user) {
+
+        disposable.add(
+                Observable.just(user)
+                .subscribeOn(Schedulers.io())
+                .subscribe(
+                        item -> {
+                            Log.d("MyTag","item : " + item + " 저장");
+                            userDao.add(item);
+                        },
+                        error -> {
+                            Log.d("MyTag","onError");
+                        },
+                        () -> {
+                            Log.d("MyTag","onCompleted");
+                        }
+                )
+        );
+
     }
 }

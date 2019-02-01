@@ -28,7 +28,7 @@ buildscript {
         roomVersion = '1.1.1'
 
         // rxAndroid
-        rxAndroidVersion = '2.0.2'
+        rxAndroidVersion = '2.1.0'
         rxJavaVersion = '2.1.3'
 
         // dagger2
