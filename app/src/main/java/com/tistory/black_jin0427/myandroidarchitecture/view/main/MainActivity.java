@@ -13,12 +13,10 @@ import com.tistory.black_jin0427.myandroidarchitecture.R;
 import com.tistory.black_jin0427.myandroidarchitecture.adapter.MainAdapter;
 import com.tistory.black_jin0427.myandroidarchitecture.api.model.User;
 import com.tistory.black_jin0427.myandroidarchitecture.view.detail.DetailActivity;
-import com.tistory.black_jin0427.myandroidarchitecture.view.recently.RecentActivity;
 
 import java.util.ArrayList;
 
 import butterknife.BindView;
-import butterknife.OnClick;
 
 public class MainActivity extends BaseActivity implements MainContract.View, MainAdapter.OnItemClickListener {
 
@@ -81,9 +79,4 @@ public class MainActivity extends BaseActivity implements MainContract.View, Mai
         adapter.updateView(user);
     }
 
-    @OnClick(R.id.btn_recent_user)
-    void onClick() {
-        Intent intent = new Intent(this, RecentActivity.class);
-        startActivity(intent);
-    }
 }

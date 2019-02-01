@@ -22,8 +22,6 @@
 
         <activity android:name=".view.detail.DetailActivity"/>
 
-        <activity android:name=".view.recently.RecentActivity"/>
-
     </application>
 
 </manifest>
