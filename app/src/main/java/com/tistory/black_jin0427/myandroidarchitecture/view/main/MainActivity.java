@@ -14,7 +14,7 @@ import com.tistory.black_jin0427.myandroidarchitecture.adapter.MainAdapter;
 import com.tistory.black_jin0427.myandroidarchitecture.api.model.User;
 import com.tistory.black_jin0427.myandroidarchitecture.room.UserDatabaseProvider;
 import com.tistory.black_jin0427.myandroidarchitecture.view.detail.DetailActivity;
-import com.tistory.black_jin0427.myandroidarchitecture.view.recently.RecentActivity;
+import com.tistory.black_jin0427.myandroidarchitecture.view.recent.RecentActivity;
 
 import java.util.ArrayList;
 
@@ -46,8 +46,7 @@ public class MainActivity extends BaseActivity implements MainContract.View, Mai
         presenter.setView(this);
 
         presenter.loadData();
-        presenter.setRxEvent(UserDatabaseProvider.
-                getInstance(this).getUserDao());
+        presenter.setRxEvent();
     }
 
     @Override

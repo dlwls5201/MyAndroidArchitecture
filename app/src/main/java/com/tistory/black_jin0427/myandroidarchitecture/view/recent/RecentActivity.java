@@ -1,4 +1,4 @@
-package com.tistory.black_jin0427.myandroidarchitecture.view.recently;
+package com.tistory.black_jin0427.myandroidarchitecture.view.recent;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -36,10 +36,12 @@ public class RecentActivity extends BaseActivity implements RecentContract.View,
         setContentView(R.layout.activity_recent);
         setTitle("RECENT USER");
 
+        // recycler view 초기화
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
         adapter.setClickListener(this);
 
+        // presenter 와 연결
         presenter.setView(this);
         presenter.loadData(UserDatabaseProvider.
                 getInstance(this).
@@ -47,10 +49,17 @@ public class RecentActivity extends BaseActivity implements RecentContract.View,
     }
 
     @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        // presenter 와의 연결을 해제합니다.
+        presenter.releaseView();
+    }
+
+    @Override
+    // 단일 아이템 삭제
     public void onClick(User user) {
-        presenter.deleteData(UserDatabaseProvider.
-                getInstance(this).
-                getUserDao(),
+        presenter.deleteData(
+                UserDatabaseProvider.getInstance(this).getUserDao(),
                 user);
     }
 
@@ -70,9 +79,9 @@ public class RecentActivity extends BaseActivity implements RecentContract.View,
     }
 
     @OnClick(R.id.btn_clear_all)
+    // 모든 아이템 삭제
     void onClick() {
-        presenter.clearAll(UserDatabaseProvider.
-                getInstance(this).
-                getUserDao());
+        presenter.clearAll(
+                UserDatabaseProvider.getInstance(this).getUserDao());
     }
 }

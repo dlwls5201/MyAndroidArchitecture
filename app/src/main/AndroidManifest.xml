@@ -22,7 +22,7 @@
 
         <activity android:name=".view.detail.DetailActivity"/>
 
-        <activity android:name=".view.recently.RecentActivity"/>
+        <activity android:name=".view.recent.RecentActivity"/>
 
     </application>
 

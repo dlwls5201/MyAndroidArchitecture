@@ -8,6 +8,7 @@ import com.bumptech.glide.Glide;
 import com.tistory.black_jin0427.myandroidarchitecture.BaseActivity;
 import com.tistory.black_jin0427.myandroidarchitecture.R;
 import com.tistory.black_jin0427.myandroidarchitecture.api.model.User;
+import com.tistory.black_jin0427.myandroidarchitecture.room.UserDatabaseProvider;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -38,6 +39,12 @@ public class DetailActivity extends BaseActivity implements DetailContract.View 
         getUserFromIntent();
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        presenter.releaseView();
+    }
+
     private void getUserFromIntent(){
         user = (User) getIntent().getSerializableExtra(KEY_USER);
         setTitle(user.getFullName());
@@ -56,10 +63,14 @@ public class DetailActivity extends BaseActivity implements DetailContract.View 
 
     @Override
     public void setText(String text) {
+
         tvDetailLIkeCnt.setText(text);
     }
 
     @OnClick(R.id.btn_detail_like) void onClick() {
-        presenter.clickEvent(user);
+
+        presenter.clickEvent(
+                UserDatabaseProvider.getInstance(this).getUserDao(),
+                user);
     }
 }

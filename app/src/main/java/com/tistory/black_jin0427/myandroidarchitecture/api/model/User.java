@@ -14,11 +14,7 @@ import java.io.Serializable;
 @Entity(tableName = "userTable")
 public class User implements Serializable {
 
-    // 적어도 한개의 PrimaryKey 가 존재해야 합니다.
-    //@PrimaryKey(autoGenerate = true)
-    //public int primaryKey;
-
-    // Entity 클래스가 field 를 object 를 갖는 경우 @Embeded 를 사용합니다.
+    // Entity 클래스의 field 가 object 인 경우 @Embeded 를 설정해 줍니다.
     @Embedded
     @SerializedName("gender") public String gender;
 
@@ -28,21 +24,22 @@ public class User implements Serializable {
     @Embedded
     @SerializedName("location") public Location location;
 
-    @SerializedName("email")
-    @PrimaryKey
-
-    @NonNull    //You must annotate primary keys with @NonNull.
-    public String email;
-
     @Embedded
     @SerializedName("login") public Login login;
+
+    @Embedded
+    @SerializedName("picture") public Picture picture;
+
+    // email 값을 Primary Key 롤 설정하였습니다.
+    // Primary Key 는 @NonNull 을 필수로 설정해 주어야 합니다.
+    @SerializedName("email")
+    @PrimaryKey
+    @NonNull
+    public String email;
 
     @SerializedName("phone") public String phone;
 
     @SerializedName("cell") public String cell;
-
-    @Embedded
-    @SerializedName("picture") public Picture picture;
 
     public int likeCnt = 0;
 

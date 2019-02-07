@@ -33,8 +33,9 @@ public interface MainContract {
 
         void loadData();
 
-        void setRxEvent(UserDao userDao);
+        void setRxEvent();
 
+        // 유저 추가를 해줍니다.
         void addUser(UserDao userDao, User user);
     }
 }

@@ -2,6 +2,7 @@ package com.tistory.black_jin0427.myandroidarchitecture.view.detail;
 
 import com.tistory.black_jin0427.myandroidarchitecture.BasePresenter;
 import com.tistory.black_jin0427.myandroidarchitecture.api.model.User;
+import com.tistory.black_jin0427.myandroidarchitecture.room.UserDao;
 
 public interface DetailContract {
 
@@ -18,6 +19,7 @@ public interface DetailContract {
         @Override
         void releaseView();
 
-        void clickEvent(User user);
+        // UserDao 값을 추가 인자로 보내줍니다.
+        void clickEvent(UserDao userDao, User user);
     }
 }

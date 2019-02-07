@@ -1,4 +1,4 @@
-package com.tistory.black_jin0427.myandroidarchitecture.view.recently;
+package com.tistory.black_jin0427.myandroidarchitecture.view.recent;
 
 import com.tistory.black_jin0427.myandroidarchitecture.BasePresenter;
 import com.tistory.black_jin0427.myandroidarchitecture.api.model.User;
@@ -14,6 +14,7 @@ public interface RecentContract {
 
         void hideProgress();
 
+        // Room 으로 부터 받은 데이터를 어댑터를 통해 보여줍니다.
         void setItems(ArrayList<User> items);
     }
 
@@ -25,10 +26,13 @@ public interface RecentContract {
         @Override
         void releaseView();
 
+        // Room 으로 부터 데이터를 받아 옵니다.
         void loadData(UserDao userDao);
 
+        // Room 데이터베이스에서 user 데이터 1개를 삭제합니다.
         void deleteData(UserDao userDao, User user);
 
+        // Room 데이터를 전부 삭제 합니다.
         void clearAll(UserDao userDao);
     }
 }

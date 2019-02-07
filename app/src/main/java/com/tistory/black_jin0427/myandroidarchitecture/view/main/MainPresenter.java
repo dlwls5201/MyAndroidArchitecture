@@ -63,29 +63,6 @@ public class MainPresenter implements MainContract.Presenter {
 
     }
 
-    @Override
-    public void setRxEvent(UserDao userDao) {
-
-        disposable.add(
-                RxEvent.getInstance()
-                        .getObservable()
-                        .subscribe(
-                                object -> {
-                                    if(object instanceof User) {
-                                        view.updateView((User) object);
-
-                                        addUser(userDao, (User) object);
-                                    }
-                                },
-                                error -> {
-                                    Log.d("MyTag","onError");
-                                },
-                                () -> {
-                                    Log.d("MyTag","onCompleted");
-                                }
-                        )
-        );
-    }
 
     @Override
     public void addUser(UserDao userDao, User user) {
@@ -99,13 +76,35 @@ public class MainPresenter implements MainContract.Presenter {
                             userDao.add(item);
                         },
                         error -> {
-                            Log.d("MyTag","onError");
+                            Log.d("MyTag","저장 onError");
                         },
                         () -> {
-                            Log.d("MyTag","onCompleted");
+                            Log.d("MyTag","저장 onCompleted");
                         }
                 )
         );
 
+    }
+
+    @Override
+    public void setRxEvent() {
+
+        disposable.add(
+                RxEvent.getInstance()
+                        .getObservable()
+                        .subscribe(
+                                object -> {
+                                    if(object instanceof User) {
+                                        view.updateView((User) object);
+                                    }
+                                },
+                                error -> {
+                                    Log.d("MyTag","onError");
+                                },
+                                () -> {
+                                    Log.d("MyTag","onCompleted");
+                                }
+                        )
+        );
     }
 }

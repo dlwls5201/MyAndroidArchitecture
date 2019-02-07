@@ -1,4 +1,4 @@
-package com.tistory.black_jin0427.myandroidarchitecture.view.recently;
+package com.tistory.black_jin0427.myandroidarchitecture.view.recent;
 
 
 import android.util.Log;
@@ -37,43 +37,37 @@ public class RecentPresenter implements RecentContract.Presenter {
     public void loadData(UserDao userDao) {
         disposable.add(
                 userDao.getUser()
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .doOnSubscribe(__ -> {
-                    view.showProgress();
-                })
-                .doOnTerminate(() -> {
-                    //동작 안됨
-                })
-                .doOnComplete(() -> {
-                    //동작 안됨
-                 })
-                .subscribe(users -> {
-                    view.setItems((ArrayList<User>)users);
-                    view.hideProgress();
-                }, error -> {
-                    Log.e("MyTag", error.getMessage());
-                })
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .doOnSubscribe(__ -> {
+                            view.showProgress();
+                        })
+                        .subscribe(
+                                users -> {
+                                    view.setItems((ArrayList<User>) users);
+                                    view.hideProgress();
+                                },
+                                error -> {
+                                    Log.e("MyTag", error.getMessage());
+                                })
         );
-
     }
 
     @Override
     public void deleteData(UserDao userDao, User user) {
-
         disposable.add(
                 Observable.just(user)
                         .subscribeOn(Schedulers.io())
                         .subscribe(
                                 item -> {
-                                    Log.d("MyTag","item : " + item + " 삭제");
+                                    Log.d("MyTag", "item : " + item + " 삭제");
                                     userDao.delete(item);
                                 },
                                 error -> {
-                                    Log.d("MyTag","onError");
+                                    Log.d("MyTag", "deleteData onError");
                                 },
                                 () -> {
-                                    Log.d("MyTag","onCompleted");
+                                    Log.d("MyTag", "deleteData onCompleted");
                                 }
                         )
         );
@@ -90,13 +84,12 @@ public class RecentPresenter implements RecentContract.Presenter {
                                     userDao.clearAll();
                                 },
                                 error -> {
-                                    Log.d("MyTag","onError");
+                                    Log.d("MyTag", "clearAll onError");
                                 },
                                 () -> {
-                                    Log.d("MyTag","onCompleted");
+                                    Log.d("MyTag", "clearAll onCompleted");
                                 }
                         )
         );
-
     }
 }
