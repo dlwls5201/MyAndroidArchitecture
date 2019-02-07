@@ -18,8 +18,10 @@ public interface MainContract {
 
         void showToast(String message);
 
+        // 아이템을 어댑터에 연결해 줍니다.
         void setItems(ArrayList<User> items);
 
+        // 단일 아이템에 변경되었음을 알려줍니다.
         void updateView(User user);
 
     }
@@ -32,8 +34,10 @@ public interface MainContract {
         @Override
         void releaseView();
 
+        // API 통신을 통해 데이터를 받아옵니다.
         void loadData();
 
+        // RxEventBus 를 연결하여 Like 값을 동기화 해줍니다.
         void setRxEvent();
     }
 }

@@ -18,7 +18,8 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 
-public class MainActivity extends BaseActivity implements MainContract.View, MainAdapter.OnItemClickListener {
+public class MainActivity extends BaseActivity
+        implements MainContract.View, MainAdapter.OnItemClickListener {
 
     private MainAdapter adapter = new MainAdapter();
 
@@ -36,24 +37,33 @@ public class MainActivity extends BaseActivity implements MainContract.View, Mai
         setContentView(R.layout.activity_main);
         setTitle("RANDOM USER");
 
+        // recycler view 초기화
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
         adapter.setClickListener(this);
 
+        // presenter 와 연결
         presenter.setView(this);
 
+        // 랜덤 유저 데이터를 받아옵니다.
         presenter.loadData();
+
+        // RxEventBus 를 연결합니다.
         presenter.setRxEvent();
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
+
+        // presenter 와의 연결을 해제합니다.
         presenter.releaseView();
     }
 
     @Override
     public void onClick(User user) {
+        // 어탭터 리스터로 아이템 클릭 시 상세 유저 화면으로 넘어갑니다.
+        // intent 통해 user 데이터를 넘겨줍니다.
         Intent intent = new Intent(this, DetailActivity.class);
         intent.putExtra(DetailActivity.KEY_USER, user);
         startActivity(intent);
@@ -70,11 +80,13 @@ public class MainActivity extends BaseActivity implements MainContract.View, Mai
     }
 
     @Override
+    // 아이템을 어댑터에 연결해 줍니다.
     public void setItems(ArrayList<User> items) {
         adapter.setItems(items);
     }
 
     @Override
+    // 단일 아이템에 변경되었음을 알려줍니다.
     public void updateView(User user) {
         adapter.updateView(user);
     }

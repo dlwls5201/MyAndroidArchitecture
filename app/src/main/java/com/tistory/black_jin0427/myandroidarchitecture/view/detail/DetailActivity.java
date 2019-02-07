@@ -32,19 +32,23 @@ public class DetailActivity extends BaseActivity implements DetailContract.View 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
+        // presenter 와 연결
         presenter = new DetailPresenter();
         presenter.setView(this);
 
+        // MainActivity 로부터 User 객체를 받아옵니다.
         getUserFromIntent();
     }
 
     private void getUserFromIntent(){
         user = (User) getIntent().getSerializableExtra(KEY_USER);
         setTitle(user.getFullName());
-        initData(user);
+
+        // 받아온 User 객체로 부터 View 를 초기화 해줍니다.
+        initView(user);
     }
 
-    private void initData(User user) {
+    private void initView(User user) {
 
         tvDetailLIkeCnt.setText(user.getLikeCnt());
 

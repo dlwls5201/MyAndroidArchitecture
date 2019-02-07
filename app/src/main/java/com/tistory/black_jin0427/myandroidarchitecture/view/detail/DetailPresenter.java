@@ -21,9 +21,14 @@ public class DetailPresenter implements DetailContract.Presenter {
 
     @Override
     public void clickEvent(User user) {
+        // Like 클릭시 발생하는 비즈니스 로직입니다.
+        // User 객체의 LikeCnt 값을 늘려 줍니다.
         user.likeCnt++;
+
+        // view 상태에 변화를 줍니다.
         view.setText(user.getLikeCnt());
 
+        // RxEventBus 를 호출하여 MainActivity 에 변화가 생겼음을 알려줍니다.
         RxEvent.getInstance().sendEvent(user);
     }
 }

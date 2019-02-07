@@ -19,12 +19,12 @@ import retrofit2.Retrofit;
 
 public class MainPresenter implements MainContract.Presenter {
 
-    GithubApi api;
-    MainContract.View view;
+    private GithubApi api;
+    private MainContract.View view;
 
     private CompositeDisposable disposable;
 
-    public MainPresenter() {
+    MainPresenter() {
         this.api = GithubApiProvider.provideGithubApi();
         this.disposable = new CompositeDisposable();
     }
@@ -72,6 +72,7 @@ public class MainPresenter implements MainContract.Presenter {
                                         view.updateView((User) object);
                                     }
                                 },
+                                // 아래 코드는 생략 가능 합니다.
                                 error -> {
                                     Log.d("MyTag","onError");
                                 },
