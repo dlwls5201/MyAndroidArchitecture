@@ -3,6 +3,7 @@ package com.tistory.black_jin0427.myandroidarchitecture.api.model;
 import android.arch.persistence.room.Embedded;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
+import android.support.annotation.NonNull;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -14,8 +15,8 @@ import java.io.Serializable;
 public class User implements Serializable {
 
     // 적어도 한개의 PrimaryKey 가 존재해야 합니다.
-    @PrimaryKey(autoGenerate = true)
-    public int primaryKey;
+    //@PrimaryKey(autoGenerate = true)
+    //public int primaryKey;
 
     // Entity 클래스가 field 를 object 를 갖는 경우 @Embeded 를 사용합니다.
     @Embedded
@@ -27,7 +28,11 @@ public class User implements Serializable {
     @Embedded
     @SerializedName("location") public Location location;
 
-    @SerializedName("email") public String email;
+    @SerializedName("email")
+    @PrimaryKey
+
+    @NonNull    //You must annotate primary keys with @NonNull.
+    public String email;
 
     @Embedded
     @SerializedName("login") public Login login;

@@ -1,10 +1,12 @@
 package com.tistory.black_jin0427.myandroidarchitecture.view.main;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 
@@ -46,7 +48,8 @@ public class MainActivity extends BaseActivity implements MainContract.View, Mai
         presenter.setView(this);
 
         presenter.loadData();
-        presenter.setRxEvent();
+        presenter.setRxEvent(UserDatabaseProvider.
+                getInstance(this).getUserDao());
     }
 
     @Override
@@ -57,15 +60,16 @@ public class MainActivity extends BaseActivity implements MainContract.View, Mai
 
     @Override
     public void onClick(User user) {
-        Intent intent = new Intent(this, DetailActivity.class);
-        intent.putExtra(DetailActivity.KEY_USER, user);
-        startActivity(intent);
 
         // UserDatabase 에 저장합니다.
         presenter.addUser(
                 UserDatabaseProvider.getInstance(this).getUserDao(),
                 user);
 
+        // DetailActivity 로 이동합니다.
+        Intent intent = new Intent(this, DetailActivity.class);
+        intent.putExtra(DetailActivity.KEY_USER, user);
+        startActivity(intent);
     }
 
     @Override

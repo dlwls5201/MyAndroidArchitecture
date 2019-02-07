@@ -17,8 +17,6 @@ public interface MainContract {
 
         void hideProgress();
 
-        void showToast(String message);
-
         void setItems(ArrayList<User> items);
 
         void updateView(User user);
@@ -35,7 +33,7 @@ public interface MainContract {
 
         void loadData();
 
-        void setRxEvent();
+        void setRxEvent(UserDao userDao);
 
         void addUser(UserDao userDao, User user);
     }

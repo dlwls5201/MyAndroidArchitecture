@@ -7,6 +7,7 @@ import com.tistory.black_jin0427.myandroidarchitecture.api.GithubApiProvider;
 import com.tistory.black_jin0427.myandroidarchitecture.api.model.User;
 import com.tistory.black_jin0427.myandroidarchitecture.constant.Constant;
 import com.tistory.black_jin0427.myandroidarchitecture.room.UserDao;
+import com.tistory.black_jin0427.myandroidarchitecture.room.UserDatabaseProvider;
 import com.tistory.black_jin0427.myandroidarchitecture.rxEventBus.RxEvent;
 
 import java.util.ArrayList;
@@ -63,7 +64,7 @@ public class MainPresenter implements MainContract.Presenter {
     }
 
     @Override
-    public void setRxEvent() {
+    public void setRxEvent(UserDao userDao) {
 
         disposable.add(
                 RxEvent.getInstance()
@@ -72,6 +73,8 @@ public class MainPresenter implements MainContract.Presenter {
                                 object -> {
                                     if(object instanceof User) {
                                         view.updateView((User) object);
+
+                                        addUser(userDao, (User) object);
                                     }
                                 },
                                 error -> {
