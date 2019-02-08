@@ -10,12 +10,15 @@ import com.tistory.black_jin0427.myandroidarchitecture.R;
 import com.tistory.black_jin0427.myandroidarchitecture.api.model.User;
 import com.tistory.black_jin0427.myandroidarchitecture.room.UserDatabaseProvider;
 
+import javax.inject.Inject;
+
 import butterknife.BindView;
 import butterknife.OnClick;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class DetailActivity extends BaseActivity implements DetailContract.View {
 
+    @Inject
     DetailPresenter presenter;
 
     @BindView(R.id.iv_detail_profile)
@@ -32,9 +35,6 @@ public class DetailActivity extends BaseActivity implements DetailContract.View 
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
-
-        presenter = new DetailPresenter();
-        presenter.setView(this);
 
         getUserFromIntent();
     }

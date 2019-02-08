@@ -19,8 +19,11 @@ public class RecentPresenter implements RecentContract.Presenter {
 
     private CompositeDisposable disposable;
 
-    RecentPresenter() {
+    private UserDao userDao;
+
+    public RecentPresenter(UserDao userDao) {
         this.disposable = new CompositeDisposable();
+        this.userDao = userDao;
     }
 
     @Override
@@ -34,7 +37,7 @@ public class RecentPresenter implements RecentContract.Presenter {
     }
 
     @Override
-    public void loadData(UserDao userDao) {
+    public void loadData() {
         disposable.add(
                 userDao.getUser()
                         .subscribeOn(Schedulers.io())
@@ -54,7 +57,7 @@ public class RecentPresenter implements RecentContract.Presenter {
     }
 
     @Override
-    public void deleteData(UserDao userDao, User user) {
+    public void deleteData(User user) {
         disposable.add(
                 Observable.just(user)
                         .subscribeOn(Schedulers.io())
@@ -74,7 +77,7 @@ public class RecentPresenter implements RecentContract.Presenter {
     }
 
     @Override
-    public void clearAll(UserDao userDao) {
+    public void clearAll() {
         disposable.add(
                 Observable.just("clear ALl")
                         .subscribeOn(Schedulers.io())

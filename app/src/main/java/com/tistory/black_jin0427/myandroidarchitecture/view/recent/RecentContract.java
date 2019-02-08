@@ -27,12 +27,12 @@ public interface RecentContract {
         void releaseView();
 
         // Room 으로 부터 데이터를 받아 옵니다.
-        void loadData(UserDao userDao);
+        void loadData();
 
         // Room 데이터베이스에서 user 데이터 1개를 삭제합니다.
-        void deleteData(UserDao userDao, User user);
+        void deleteData(User user);
 
         // Room 데이터를 전부 삭제 합니다.
-        void clearAll(UserDao userDao);
+        void clearAll();
     }
 }

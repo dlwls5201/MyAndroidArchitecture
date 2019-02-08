@@ -10,13 +10,19 @@ import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+/**
+ *  Dagger 사용을 사용함으로서 필요성이 없어짐
+ */
 public final class GithubApiProvider {
 
-    public static GithubApi provideGithubApi() {
+    /*public static GithubApi provideGithubApi() {
         return new Retrofit.Builder()
                 .baseUrl(Constant.BASE_URL)
+                // OkHttpClient 객체를 필요로 합니다.
                 .client(provideOkHttpClient(provideLoggingInterceptor()))
+                // CallAdapter.Factory 객체를 필요로 합니다.
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.createAsync())
+                // Converter.Factory 객체를 필요로 합니다.
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
                 .create(GithubApi.class);
@@ -32,5 +38,5 @@ public final class GithubApiProvider {
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         return interceptor;
-    }
+    }*/
 }

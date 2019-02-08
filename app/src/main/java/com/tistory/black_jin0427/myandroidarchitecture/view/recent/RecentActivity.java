@@ -15,14 +15,18 @@ import com.tistory.black_jin0427.myandroidarchitecture.room.UserDatabaseProvider
 
 import java.util.ArrayList;
 
+import javax.inject.Inject;
+
 import butterknife.BindView;
 import butterknife.OnClick;
 
 public class RecentActivity extends BaseActivity implements RecentContract.View, MainAdapter.OnItemClickListener  {
 
-    private MainAdapter adapter = new MainAdapter();
+    @Inject
+    MainAdapter adapter = new MainAdapter();
 
-    private RecentPresenter presenter = new RecentPresenter();
+    @Inject
+    RecentPresenter presenter;
 
     @BindView(R.id.recycler_view)
     RecyclerView recyclerView;
@@ -43,9 +47,7 @@ public class RecentActivity extends BaseActivity implements RecentContract.View,
 
         // presenter 와 연결
         presenter.setView(this);
-        presenter.loadData(UserDatabaseProvider.
-                getInstance(this).
-                getUserDao());
+        presenter.loadData();
     }
 
     @Override
@@ -58,9 +60,7 @@ public class RecentActivity extends BaseActivity implements RecentContract.View,
     @Override
     // 단일 아이템 삭제
     public void onClick(User user) {
-        presenter.deleteData(
-                UserDatabaseProvider.getInstance(this).getUserDao(),
-                user);
+        presenter.deleteData(user);
     }
 
     @Override
@@ -81,7 +81,6 @@ public class RecentActivity extends BaseActivity implements RecentContract.View,
     @OnClick(R.id.btn_clear_all)
     // 모든 아이템 삭제
     void onClick() {
-        presenter.clearAll(
-                UserDatabaseProvider.getInstance(this).getUserDao());
+        presenter.clearAll();
     }
 }

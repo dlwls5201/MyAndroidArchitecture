@@ -22,14 +22,18 @@ import retrofit2.Retrofit;
 
 public class MainPresenter implements MainContract.Presenter {
 
-    GithubApi api;
-    MainContract.View view;
+    private MainContract.View view;
 
     private CompositeDisposable disposable;
 
-    MainPresenter() {
-        this.api = GithubApiProvider.provideGithubApi();
+    private UserDao userDao;
+
+    private GithubApi api;
+
+    public MainPresenter(UserDao userDao, GithubApi api) {
         this.disposable = new CompositeDisposable();
+        this.userDao = userDao;
+        this.api = api;
     }
 
     @Override
@@ -65,7 +69,7 @@ public class MainPresenter implements MainContract.Presenter {
 
 
     @Override
-    public void addUser(UserDao userDao, User user) {
+    public void addUser(User user) {
 
         disposable.add(
                 Observable.just(user)
@@ -74,12 +78,6 @@ public class MainPresenter implements MainContract.Presenter {
                         item -> {
                             Log.d("MyTag","item : " + item + " 저장");
                             userDao.add(item);
-                        },
-                        error -> {
-                            Log.d("MyTag","저장 onError");
-                        },
-                        () -> {
-                            Log.d("MyTag","저장 onCompleted");
                         }
                 )
         );
@@ -97,12 +95,6 @@ public class MainPresenter implements MainContract.Presenter {
                                     if(object instanceof User) {
                                         view.updateView((User) object);
                                     }
-                                },
-                                error -> {
-                                    Log.d("MyTag","onError");
-                                },
-                                () -> {
-                                    Log.d("MyTag","onCompleted");
                                 }
                         )
         );

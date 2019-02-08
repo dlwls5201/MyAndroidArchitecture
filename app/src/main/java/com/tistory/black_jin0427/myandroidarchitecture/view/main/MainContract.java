@@ -1,6 +1,7 @@
 package com.tistory.black_jin0427.myandroidarchitecture.view.main;
 
 import com.tistory.black_jin0427.myandroidarchitecture.BasePresenter;
+import com.tistory.black_jin0427.myandroidarchitecture.api.GithubApi;
 import com.tistory.black_jin0427.myandroidarchitecture.api.model.User;
 import com.tistory.black_jin0427.myandroidarchitecture.room.UserDao;
 
@@ -35,7 +36,6 @@ public interface MainContract {
 
         void setRxEvent();
 
-        // 유저 추가를 해줍니다.
-        void addUser(UserDao userDao, User user);
+        void addUser(User user);
     }
 }

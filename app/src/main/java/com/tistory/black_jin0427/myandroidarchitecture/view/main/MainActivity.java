@@ -12,20 +12,24 @@ import com.tistory.black_jin0427.myandroidarchitecture.BaseActivity;
 import com.tistory.black_jin0427.myandroidarchitecture.R;
 import com.tistory.black_jin0427.myandroidarchitecture.adapter.MainAdapter;
 import com.tistory.black_jin0427.myandroidarchitecture.api.model.User;
-import com.tistory.black_jin0427.myandroidarchitecture.room.UserDatabaseProvider;
 import com.tistory.black_jin0427.myandroidarchitecture.view.detail.DetailActivity;
 import com.tistory.black_jin0427.myandroidarchitecture.view.recent.RecentActivity;
 
 import java.util.ArrayList;
 
+import javax.inject.Inject;
+
 import butterknife.BindView;
 import butterknife.OnClick;
 
-public class MainActivity extends BaseActivity implements MainContract.View, MainAdapter.OnItemClickListener {
+public class MainActivity extends BaseActivity
+        implements MainContract.View, MainAdapter.OnItemClickListener {
 
-    private MainAdapter adapter = new MainAdapter();
+    @Inject
+    MainAdapter adapter;
 
-    private MainPresenter presenter = new MainPresenter();
+    @Inject
+    MainPresenter presenter;
 
     @BindView(R.id.recycler_view)
     RecyclerView recyclerView;
@@ -59,9 +63,7 @@ public class MainActivity extends BaseActivity implements MainContract.View, Mai
     public void onClick(User user) {
 
         // UserDatabase 에 저장합니다.
-        presenter.addUser(
-                UserDatabaseProvider.getInstance(this).getUserDao(),
-                user);
+        presenter.addUser(user);
 
         // DetailActivity 로 이동합니다.
         Intent intent = new Intent(this, DetailActivity.class);

@@ -16,7 +16,7 @@ public class DetailPresenter implements DetailContract.Presenter {
 
     private CompositeDisposable disposable;
 
-    DetailPresenter() {
+    public DetailPresenter() {
         disposable = new CompositeDisposable();
     }
 
