@@ -24,7 +24,8 @@ https://t1.daumcdn.net/cfile/tistory/99C58B405C5BB58713
 ### MVP sample
 
 1. MVP basic sample<br>
-https://black-jin0427.tistory.com/149?category=727620
+<a href="https://black-jin0427.tistory.com/149" target="_blank">https://black-jin0427.tistory.com/149</a>
+
 
 2. MVP basic sample with room<br>
 https://black-jin0427.tistory.com/150
