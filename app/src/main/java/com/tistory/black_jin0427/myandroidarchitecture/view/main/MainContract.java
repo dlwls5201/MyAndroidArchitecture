@@ -1,17 +1,14 @@
 package com.tistory.black_jin0427.myandroidarchitecture.view.main;
 
-import com.tistory.black_jin0427.myandroidarchitecture.BasePresenter;
+import com.tistory.black_jin0427.myandroidarchitecture.BaseContract;
 import com.tistory.black_jin0427.myandroidarchitecture.api.model.User;
 import com.tistory.black_jin0427.myandroidarchitecture.room.UserDao;
 
 import java.util.ArrayList;
 
-import io.reactivex.disposables.CompositeDisposable;
-import io.reactivex.disposables.Disposable;
-
 public interface MainContract {
 
-    interface View {
+    interface View extends BaseContract.View {
 
         void showProgress();
 
@@ -23,7 +20,7 @@ public interface MainContract {
 
     }
 
-    interface Presenter extends BasePresenter<MainContract.View> {
+    interface Presenter extends BaseContract.Presenter<View> {
 
         @Override
         void setView(View view);
