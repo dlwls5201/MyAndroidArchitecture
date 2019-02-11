@@ -11,8 +11,7 @@ Like event effect MainActivity using RxEvent Bus
 
 ### Demo
 
-https://t1.daumcdn.net/cfile/tistory/99C58B405C5BB58713
-
+['https://t1.daumcdn.net/cfile/tistory/99C58B405C5BB58713'](https://t1.daumcdn.net/cfile/tistory/99C58B405C5BB58713){: target="_blank" }
 
 ### Use Library
 
@@ -24,7 +23,7 @@ https://t1.daumcdn.net/cfile/tistory/99C58B405C5BB58713
 ### MVP sample
 
 1. MVP basic sample<br>
-<a href="https://black-jin0427.tistory.com/149" target="_blank">https://black-jin0427.tistory.com/149</a>
+https://black-jin0427.tistory.com/149
 
 
 2. MVP basic sample with room<br>
@@ -37,4 +36,4 @@ https://black-jin0427.tistory.com/151
 
 1. This is AAC(Android Architecture Component) sample<br>
 using ViewModel, LiveData, DataBinding, Koin<br>
-https://black-jin0427.tistory.com/138?category=727620
+https://black-jin0427.tistory.com/138
