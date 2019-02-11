@@ -9,10 +9,16 @@ This Sample consist of MainActivity and DetailActivity<br>
 I make the recycler view using this api in MainActivity and also you can click like button in DetailActivity<br>
 Like event effect MainActivity using RxEvent Bus
 
+### Demo
+
+https://t1.daumcdn.net/cfile/tistory/99C58B405C5BB58713
+
+
 ### Use Library
 
-1.RxRetrofit
-2.RxEventBus
+1. RxRetrofit
+
+2. RxEventBus
 
 
 ### MVP sample
