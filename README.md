@@ -15,9 +15,9 @@ https://t1.daumcdn.net/cfile/tistory/99C58B405C5BB58713
 
 ### Use Library
 
-1. syntax: [RxRetrofit](https://black-jin0427.tistory.com/35)
+1. [RxRetrofit](https://black-jin0427.tistory.com/35)
 
-2. syntax: [RxEventBus](https://black-jin0427.tistory.com/34)
+2. [RxEventBus](https://black-jin0427.tistory.com/34)
 
 
 ### MVP sample
