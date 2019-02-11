@@ -1,14 +1,13 @@
 package com.tistory.black_jin0427.myandroidarchitecture.view.recent;
 
-import com.tistory.black_jin0427.myandroidarchitecture.BasePresenter;
+import com.tistory.black_jin0427.myandroidarchitecture.BaseContract;
 import com.tistory.black_jin0427.myandroidarchitecture.api.model.User;
-import com.tistory.black_jin0427.myandroidarchitecture.room.UserDao;
 
 import java.util.ArrayList;
 
 public interface RecentContract {
 
-    interface View {
+    interface View extends BaseContract.View {
 
         void showProgress();
 
@@ -18,7 +17,7 @@ public interface RecentContract {
         void setItems(ArrayList<User> items);
     }
 
-    interface Presenter extends BasePresenter<RecentContract.View> {
+    interface Presenter extends BaseContract.Presenter<View> {
 
         @Override
         void setView(View view);
