@@ -11,7 +11,7 @@ Like event effect MainActivity using RxEvent Bus
 
 ### Demo
 
-['https://t1.daumcdn.net/cfile/tistory/99C58B405C5BB58713'](https://t1.daumcdn.net/cfile/tistory/99C58B405C5BB58713){: target="_blank" }
+[text](https://t1.daumcdn.net/cfile/tistory/99C58B405C5BB58713){:target="_blank"}
 
 ### Use Library
 
