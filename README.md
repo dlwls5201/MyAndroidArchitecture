@@ -2,7 +2,8 @@
 
 ## BasicSample
 
-This is the baseSample using github api http://api.randomuser.me/?results=10 that api provide 10 random github user.
+This is the baseSample using github api <br>
+http://api.randomuser.me/?results=10 that api provide 10 random github user.
 
 I make the recycler view using this api and also you can click like button in DetailView
 Like event effect MainActivity using RxEvent Bus
