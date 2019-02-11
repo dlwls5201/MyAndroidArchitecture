@@ -7,7 +7,7 @@ http://api.randomuser.me/?results=10 that api provide 10 random github user.
 
 This Sample consist of MainActivity and DetailActivity<br>
 I make the recycler view using this api in MainActivity and also you can click like button in DetailActivity<br>
-Like event effect MainActivity using RxEvent Bus
+Like event effect MainActivity using RxEventBus
 
 ### Demo
 
@@ -15,9 +15,9 @@ https://t1.daumcdn.net/cfile/tistory/99C58B405C5BB58713
 
 ### Use Library
 
-1. RxRetrofit
+1. syntax: [RxRetrofit](https://black-jin0427.tistory.com/35)
 
-2. RxEventBus
+2. syntax: [RxEventBus](https://black-jin0427.tistory.com/34)
 
 
 ### MVP sample
