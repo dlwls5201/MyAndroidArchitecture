@@ -15,16 +15,15 @@ https://t1.daumcdn.net/cfile/tistory/99C58B405C5BB58713
 
 ### Use Library
 
-1. [RxRetrofit](https://black-jin0427.tistory.com/35)
+1. [RxRetrofit](https://black-jin0427.tistory.com/34)
 
-2. [RxEventBus](https://black-jin0427.tistory.com/34)
+2. [RxEventBus](https://black-jin0427.tistory.com/35)
 
 
 ### MVP sample
 
 1. MVP basic sample<br>
 https://black-jin0427.tistory.com/149
-
 
 2. MVP basic sample with room<br>
 https://black-jin0427.tistory.com/150
@@ -34,6 +33,6 @@ https://black-jin0427.tistory.com/151
 
 ### MVVM sample
 
-1. This is AAC(Android Architecture Component) sample<br>
+1. This is MVVM with AAC(Android Architecture Component) sample<br>
 using ViewModel, LiveData, DataBinding, Koin<br>
 https://black-jin0427.tistory.com/138
